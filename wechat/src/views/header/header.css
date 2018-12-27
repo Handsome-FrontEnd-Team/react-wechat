@@ -1,0 +1,32 @@
+#header {
+    height:0.43rem;
+    width:100%;
+    font-size: 0.18rem;
+    line-height: 0.43rem;
+    text-align: center;
+    background-image: linear-gradient(to bottom , #313036 0%,#3b3b40 100%);
+    color:#fff;
+    flex:0;
+    position: absolute;
+    left:0;
+    top:0;
+}
+#header .right {
+    position: absolute;
+    top:0;
+    right:0.15rem;
+    font-size: .24rem;
+    color:#fff;
+    text-decoration: none;
+}
+#header .left {
+    position: absolute;
+    top:0;
+    left:0.1rem;
+    font-size: .16rem;
+    color:#fff;
+    text-decoration: none;
+}
+#header input {
+    display: none;
+}
