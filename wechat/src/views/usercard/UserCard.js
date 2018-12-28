@@ -4,21 +4,21 @@ import Header from '../header/Header.js'
 
 class InfoCard extends Component {
     toChat = () => {
-        this.props.history.push({
-            pathname: '/chat',
-            params: {
-                friend: this.props.history.location.params.friend
-            }
-        })
+      this.props.history.push({
+        pathname: '/chat',
+        params: {
+          friend: this.props.history.location.params.friend
+        }
+      })
     }
 
     render() {
-        return (
-            <div id='userCard'>
-                <Header field={{title: '详细资料', path: '/userCard'}}/>
-                <div onClick={this.toChat} className="green_btn">发消息</div>
-            </div>
-        )
+      return (
+        <div id='userCard'>
+          <Header field={{title: '详细资料', path: '/userCard'}}/>
+          <div onClick={this.toChat} className='green_btn'>发消息</div>
+        </div>
+      )
     }
 }
 

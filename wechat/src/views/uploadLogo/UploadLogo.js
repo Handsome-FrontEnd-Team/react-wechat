@@ -5,13 +5,13 @@ import { connect } from 'react-redux'
 import { Toast } from 'antd-mobile'
 import axios from 'axios'
 
-const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent)
-let wrapProps
-if (isIPhone) {
-  wrapProps = {
-    onTouchStart: e => e.preventDefault()
-  }
-}
+// const isIPhone = new RegExp('\\biPhone\\b|\\biPod\\b', 'i').test(window.navigator.userAgent)
+// let wrapProps
+// if (isIPhone) {
+//   wrapProps = {
+//     onTouchStart: e => e.preventDefault()
+//   }
+// }
 
 class UploadLogo extends Component {
   constructor(props) {
