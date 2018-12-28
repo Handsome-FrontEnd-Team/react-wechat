@@ -43,18 +43,18 @@ class App extends Component {
         <Switch>
           <Route path='/login' component={Login}/>
           <Route path='/register' component={Register}/>
-          <PrivateRoute exact={true} path='/chatlist' component={Chatlist}/>
-          <PrivateRoute exact={true} path='/friends' component={Friends}/>
-          <PrivateRoute exact={true} path='/search' component={Search}/>
-          <PrivateRoute exact={true} path='/user' component={User}/>
-          <PrivateRoute exact={true} path='/more' component={Friends}/>
-          <PrivateRoute exact={true} path='/add_friend' component={Add_friend}/>
-          <PrivateRoute exact={true} path='/userCard' component={UserCard}/>
-          <PrivateRoute exact={true} path='/chat' component={Chat}/>
-          <PrivateRoute exact={true} path='/editInfo' component={EditInfo}/>
-          <PrivateRoute exact={true} path='/uploadLogo' component={UploadLogo}/>
-          <PrivateRoute exact={true} path='/resetInfo' component={ResetInfo}/>
-          <Redirect exact={true} from='/' to='/login'/>
+          <PrivateRoute exact path='/chatlist' component={Chatlist}/>
+          <PrivateRoute exact path='/friends' component={Friends}/>
+          <PrivateRoute exact path='/search' component={Search}/>
+          <PrivateRoute exact path='/user' component={User}/>
+          <PrivateRoute exact path='/more' component={Friends}/>
+          <PrivateRoute exact path='/add_friend' component={Add_friend}/>
+          <PrivateRoute exact path='/userCard' component={UserCard}/>
+          <PrivateRoute exact path='/chat' component={Chat}/>
+          <PrivateRoute exact path='/editInfo' component={EditInfo}/>
+          <PrivateRoute exact path='/uploadLogo' component={UploadLogo}/>
+          <PrivateRoute exact path='/resetInfo' component={ResetInfo}/>
+          <Redirect exact from='/' to='/login'/>
         </Switch>
       </Router>
     )
