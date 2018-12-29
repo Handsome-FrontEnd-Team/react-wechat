@@ -44,7 +44,7 @@
     content:"密码";
 }
 .login_inputs>.input_wrap:nth-of-type(3):before {
-    content:"匿名";
+    content:"昵称";
 }
 .green_btn {
     width:100%;

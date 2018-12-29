@@ -94,7 +94,7 @@ class Register extends Component {
         <div className='login_inputs'>
           <div className='input_wrap'><input name='username' onChange={this.changeHandle} type='text' placeholder='请输入账号' /></div>
           <div className='input_wrap'><input name='password' onChange={this.changeHandle} type='password' placeholder='请输入密码' /></div>
-          <div className='input_wrap'><input name='nickname' onChange={this.changeHandle} type='nickname' placeholder='请输入匿名' /></div>
+          <div className='input_wrap'><input name='nickname' onChange={this.changeHandle} type='nickname' placeholder='请输入昵称' /></div>
         </div>
         <div onClick={this.toRegister} className='green_btn'>注册</div>
         <div className='more-option' onClick={this.showActionSheet}>更多选项</div>

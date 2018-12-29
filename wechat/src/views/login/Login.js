@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
-import './login.css'
+import './login.scss'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import {
-  Link
-} from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { ActionSheet, Toast } from 'antd-mobile'
 // import * as io from 'socket.io-client'
 
@@ -92,7 +90,7 @@ class Login extends Component {
   render() {
     return (
       <div id='login'>
-        <Link to='/register' className='close iconfont icon-close'/>
+        {/* <Link to='/register' className='close iconfont icon-close'/> */}
         <div className='login_inputs'>
           <div className='input_wrap'><input name='username' ref='username' onChange={this.changeHandle} type='text' placeholder='请输入账号'/></div>
           <div className='input_wrap'><input name='password' ref='password' onChange={this.changeHandle} type='password' placeholder='请输入密码'/></div>
