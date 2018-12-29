@@ -6,6 +6,7 @@
 
 const app = require('http').createServer(handler)
 const io = require('socket.io')(app)
+const { CHAT_PORT } = require('../global')
 
 // var express = require("express");
 // var app = express();
@@ -20,7 +21,7 @@ const io = require('socket.io')(app)
 //     res.header('Access-Control-Allow-Headers', 'Content-Type');
 //     next();
 // });
-app.listen(8888)
+app.listen(CHAT_PORT)
 
 function handler(req, res) {
   res.end('socket.io connect success')
@@ -28,26 +29,26 @@ function handler(req, res) {
 
 const arrAllSocket = {}
 
-io.on('connection', function (socket) {
-  socket.on('join', function (userName) {
+io.on('connection', function(socket) {
+  socket.on('join', function(userName) {
     let user = userName
     socket.username = user
     arrAllSocket[user] = socket // 把socket存到全局数组里面去
   })
-
+  
   // 私聊：服务器接受到私聊信息，发送给目标用户
-  socket.on('private_message', function (from, to, msg) {
+  socket.on('private_message', function(from, to, msg) {
     const target = arrAllSocket[to]
-
+    
     if (target) {
       console.log(target.username)
       target.emit('private_message', from, to, msg)
       target.emit('common_message', from, to, msg)
     }
   })
-
+  
   // 连接断开
-  socket.on('disconnect', function (data) {
+  socket.on('disconnect', function(data) {
     delete (arrAllSocket[socket.username])
   })
 })

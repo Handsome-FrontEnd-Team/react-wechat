@@ -1,9 +1,9 @@
 const proxy = require('http-proxy-middleware')
 const ip = require('ip').address()
-const SERVER_CHAT_HOST = 4000
+const { APP_PORT } = require('../../global')
 
 module.exports = function(app) {
   app.use(proxy('/api', {
-    target: `http://${ip}:${SERVER_CHAT_HOST}/`
+    target: `http://${ip}:${APP_PORT}/`
   }))
 }

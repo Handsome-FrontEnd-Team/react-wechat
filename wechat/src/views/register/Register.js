@@ -57,7 +57,7 @@ class Register extends Component {
       this.failToast('请输入内容！！！')
     }
 
-    axios.post('/register', userInfo).then(res => {
+    axios.post('/api/register', userInfo).then(res => {
       if (res.data.status === 'success') {
         window.socket.emit('join', res.data.userInfo._id)
         _this.props.dispatch({ type: 'SAVE_INFO', data: res.data.userInfo })
