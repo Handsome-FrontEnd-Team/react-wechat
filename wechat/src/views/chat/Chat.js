@@ -50,11 +50,14 @@ class Chat extends Component {
         `
   }
   
+  /**
+   * 注册socket
+   * @returns {boolean}
+   */
   loadSocket() {
     if (window.socket._callbacks.$private_message) return false
     
     const _this = this
-    
     const self_id = this.props.self_id
     window.socket.on('private_message', function(from_id, to_id, data) {
       if (window.location.pathname !== '/chat' || to_id !== self_id) return false

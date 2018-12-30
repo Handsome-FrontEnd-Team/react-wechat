@@ -38,15 +38,15 @@ app.post('/api/register', function(req, res) {
 // 登录
 app.post('/api/login', function(req, res) {
   const conn = {
-    'username': req.body.username
+    username: req.body.username
   }
-  if (online_arr.indexOf(req.body.username) >= 0) {
-    res.json({
-      status: 'error',
-      message: "用户已在线"
-    })
-    return
-  }
+  // if (online_arr.indexOf(req.body.username) >= 0) {
+  //   res.json({
+  //     status: 'error',
+  //     message: "用户已在线"
+  //   })
+  //   return
+  // }
   User.findOne(conn, function(err, doc) {
     if (!doc || doc.length < 1) {
       res.json({
@@ -79,7 +79,7 @@ app.post('/api/getUsers', (req, res) => {
       $ne: req.body.self_username
     }
   }
-  
+
   User.find(conn, (err, doc) => {
     if (doc) {
       res.json({
@@ -93,39 +93,51 @@ app.post('/api/getUsers', (req, res) => {
 
 // 添加朋友
 app.post('/api/makeFriend', (req, res) => {
-  
   let self = req.body.self
   let friend = req.body.friend
-  
-  User.update({ _id: friend.id }, { $addToSet: { friends: self } }, (err, doc) => {
-  
-  })
-  User.update({ _id: self.id }, { $addToSet: { friends: friend } }, (err, doc) => {
-    res.json({
-      status: 'success',
-      message: '添加好友成功'
-    })
-  })
-  
+
+  User.update(
+    { _id: friend.id },
+    { $addToSet: { friends: self } },
+    (err, doc) => {}
+  )
+  User.update(
+    { _id: self.id },
+    { $addToSet: { friends: friend } },
+    (err, doc) => {
+      res.json({
+        status: 'success',
+        message: '添加好友成功'
+      })
+    }
+  )
 })
 
 // 上传头像
 app.post('/api/uploadLogo', upload.single('avatar'), (req, res) => {
-  User.update({ _id: req.body.id }, { $set: { logo: './logos/' + req.file.filename } }, function() {
-    res.send({
-      status: 'success',
-      url: './logos/' + req.file.filename
-    })
-  })
+  User.update(
+    { _id: req.body.id },
+    { $set: { logo: './logos/' + req.file.filename } },
+    function() {
+      res.send({
+        status: 'success',
+        url: './logos/' + req.file.filename
+      })
+    }
+  )
 })
 
 // 修改名字
 app.post('/api/savenickname', (req, res) => {
-  User.update({ _id: req.body.id }, { $set: { nickname: req.body.nickname } }, function() {
-    res.send({
-      status: 'success'
-    })
-  })
+  User.update(
+    { _id: req.body.id },
+    { $set: { nickname: req.body.nickname } },
+    function() {
+      res.send({
+        status: 'success'
+      })
+    }
+  )
 })
 
 app.get('/api', (req, res) => res.send('Hello World!~~~'))

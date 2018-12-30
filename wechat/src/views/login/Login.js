@@ -53,7 +53,6 @@ class Login extends Component {
   }
   
   toLogin() {
-    const _this = this
     const userInfo = {
       username: this.username,
       password: this.password
@@ -61,10 +60,10 @@ class Login extends Component {
     axios.post('/api/login', userInfo).then(res => {
       if (res.data.status === 'success') {
         window.socket.emit('join', res.data.userInfo._id)
-        _this.props.dispatch({ type: 'SAVE_INFO', data: res.data.userInfo })
-        _this.props.history.replace({ pathname: '/chatlist' })
+        this.props.dispatch({ type: 'SAVE_INFO', data: res.data.userInfo })
+        this.props.history.replace({ pathname: '/chatlist' })
       } else {
-        _this.successToast(res.data.message)
+        this.successToast(res.data.message)
       }
     })
   }

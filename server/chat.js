@@ -3,7 +3,6 @@
  * 功能: 消息分发
  */
 
-
 const app = require('http').createServer(handler)
 const io = require('socket.io')(app)
 const { CHAT_PORT } = require('../global')
@@ -12,7 +11,6 @@ const { CHAT_PORT } = require('../global')
 // var app = express();
 // var http = require('http').Server(app);
 // var io = require('socket.io')(http);
-
 
 // app.all('*', function(req, res, next) {
 //     res.header("Access-Control-Allow-Origin", "*");
@@ -35,20 +33,20 @@ io.on('connection', function(socket) {
     socket.username = user
     arrAllSocket[user] = socket // 把socket存到全局数组里面去
   })
-  
+
   // 私聊：服务器接受到私聊信息，发送给目标用户
   socket.on('private_message', function(from, to, msg) {
     const target = arrAllSocket[to]
-    
+
     if (target) {
       console.log(target.username)
       target.emit('private_message', from, to, msg)
       target.emit('common_message', from, to, msg)
     }
   })
-  
+
   // 连接断开
   socket.on('disconnect', function(data) {
-    delete (arrAllSocket[socket.username])
+    delete arrAllSocket[socket.username]
   })
 })

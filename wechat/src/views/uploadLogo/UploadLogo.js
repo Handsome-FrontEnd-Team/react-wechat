@@ -36,7 +36,7 @@ class UploadLogo extends Component {
     
     formdata.append('avatar', img)
     formdata.append('id', this.props.self_id)
-    axios.post('/uploadLogo', formdata).then(res => {
+    axios.post('/api/uploadLogo', formdata).then(res => {
       if (res.data.status === 'success') {
         _this.props.dispatch({ type: 'UPDATE_LOGO', url: res.data.url })
         _this.successToast('上传成功')

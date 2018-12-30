@@ -20,7 +20,7 @@ class Add_friend extends Component {
     onSubmit = (value) => {
       if (!value) return this.setState({ search_lists: [] })
       const self_username = window.store.getState().save_info.username
-      axios.post('/getUsers', { username: value, self_username: self_username }).then((res) => {
+      axios.post('/api/getUsers', { username: value, self_username: self_username }).then((res) => {
         this.setState({ search_lists: res.data.userInfo })
       })
     }
@@ -54,7 +54,7 @@ class Add_friend extends Component {
         friend: firend
       }
 
-      axios.post('/makeFriend', data).then(res => {
+      axios.post('/api/makeFriend', data).then(res => {
         if (res.data.status === 'success') {
           this.props.dispatch({ type: 'ADD_FRIEND', data: data.friend })
           this.setState({ value: ' ', search_lists: [] })

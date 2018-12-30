@@ -11,7 +11,7 @@ class ResetInfo extends Component {
   }
   save_username() {
     const val = this.refs.input.value
-    axios.post('/savenickname', {nickname: val, id: this.props.self_id}).then(res => {
+    axios.post('/api/savenickname', {nickname: val, id: this.props.self_id}).then(res => {
       this.props.dispatch({type: 'SAVENICKNAME', data: {nickname: val}})
     })
   }
